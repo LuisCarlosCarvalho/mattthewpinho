@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     title: "Matthew Pinho | Photographer",
     description: "High-end sports and commercial photography.",
   },
+  icons: {
+    icon: 'https://i.imgur.com/HuDJYS9.png',
+    apple: 'https://i.imgur.com/HuDJYS9.png',
+  },
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";

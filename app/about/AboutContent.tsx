@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -26,14 +29,7 @@ export default function AboutPage() {
     show: { opacity: 1, x: 0, transition: { duration: 0.8 } },
   };
 
-  const badges = [
-    "Events Photographer",
-    "Sports Photography",
-    "Content Creator",
-    "Social Media",
-    "Sports Marketing",
-    "Live Music",
-  ];
+  const badges = t.about.badges;
 
   return (
     <main className="flex-1 flex items-center justify-center bg-transparent pt-24 min-h-screen">
@@ -64,30 +60,30 @@ export default function AboutPage() {
           <motion.div variants={slideRightVariants} className="flex flex-col space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-zinc-900 dark:text-white mb-2 leading-tight">
-                Matthew Pinho: A Perspectiva de um Atleta através das <span className="text-[#FF8C00]">Lentes.</span>
+                {t.about.title}
               </h1>
               
               <div className="flex items-center gap-3">
                 <span className="w-12 h-1 bg-[#FF8C00] block" />
-                <h3 className="text-sm font-bold tracking-widest uppercase text-zinc-500 dark:text-zinc-400">Quem Sou & Missão</h3>
+                <h3 className="text-sm font-bold tracking-widest uppercase text-zinc-500 dark:text-zinc-400">{t.about.badge}</h3>
               </div>
             </div>
 
             <div className="space-y-6 text-base md:text-lg text-zinc-600 dark:text-zinc-400 font-light leading-relaxed">
               <p>
-                Mais do que um fotógrafo, sou um <span className="text-zinc-900 dark:text-white font-medium">atleta que vive a pulsação do desporto</span>. Juntei o útil ao agradável para capturar a essência da performance.
+                {t.about.bio1} <span className="text-zinc-900 dark:text-white font-medium">{t.about.bio1Bold}</span>{t.about.bio1End}
               </p>
               <p>
-                O meu trabalho foca-se em criar <span className="text-[#FF8C00] font-medium">memórias imortais</span> para atletas e adeptos, documentando o suor, a glória e o movimento que definem a carreira de um desportista.
+                {t.about.bio2Part1} <span className="text-[#FF8C00] font-medium">{t.about.bio2Bold}</span> {t.about.bio2Part2}
               </p>
               <p className="bg-zinc-100 dark:bg-white/5 p-4 rounded-lg border border-zinc-200 dark:border-white/5 italic">
-                "Com base em [Inserir Localização], atuo em toda a Europa, com foco especial em Portugal, Suíça, Inglaterra, França, Espanha e Itália. <span className="text-[#FF8C00]">Onde houver alta performance, estarei presente.</span>"
+                "{t.about.quote} <span className="text-[#FF8C00]">{t.about.quoteEnd}</span>"
               </p>
             </div>
 
             {/* Badges / Skills */}
             <div className="pt-4 space-y-3">
-              <h4 className="text-xs font-bold tracking-widest text-zinc-500 uppercase">Especializações</h4>
+              <h4 className="text-xs font-bold tracking-widest text-zinc-500 uppercase">{t.about.specialization}</h4>
               <div className="flex flex-wrap gap-3">
                 {badges.map((badge) => (
                   <span 
@@ -107,7 +103,7 @@ export default function AboutPage() {
                 className="inline-flex items-center group"
               >
                 <div className="bg-[#FF8C00] text-black font-bold px-6 py-4 rounded-full flex items-center gap-3 transition-transform duration-300 hover:scale-105 hover:bg-[#e67e00]">
-                  <span className="uppercase tracking-wider text-sm">Vamos criar a sua próxima memória?</span>
+                  <span className="uppercase tracking-wider text-sm">{t.about.cta}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>

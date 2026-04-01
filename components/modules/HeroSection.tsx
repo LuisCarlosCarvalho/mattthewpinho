@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function HeroSection() {
+  const { t } = useLanguage();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,7 +37,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg-football.png"
-          alt="Capturing the moment - European Football"
+          alt={t.hero.titlePart1 + " " + t.hero.titlePart2 + " " + t.hero.titlePart3}
           fill
           priority
           className="object-cover object-center"
@@ -55,19 +58,19 @@ export function HeroSection() {
           className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 dark:text-white mb-6 uppercase leading-[0.9]"
           style={{ fontFamily: "var(--font-sans)" }} // Uses Geist/Inter from the root layout
         >
-          Capturing the <br /> 
+          {t.hero.titlePart1} <br /> 
           <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-white/50">
-            Moment
+            {t.hero.titlePart2}
           </span>{" "}
           <br className="md:hidden" />
-          within the motion
+          {t.hero.titlePart3}
         </motion.h1>
 
         <motion.p 
           variants={itemVariants}
           className="text-lg md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl mb-12 font-medium"
         >
-          Visual poetry through a cinematic lens. Specializing in high-end photography and dynamic motion capture.
+          {t.hero.subtitle}
         </motion.p>
 
         {/* Action Buttons */}
@@ -76,13 +79,13 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row items-center gap-6"
         >
           <button className="group relative px-8 py-4 bg-[#FF8C00] text-black font-bold rounded-full overflow-hidden transition-all hover:bg-[#CC7000] hover:scale-105 active:scale-95 flex items-center gap-2">
-            View Portfolio
+            {t.hero.portfolioBtn}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 rounded-full ring-2 ring-[#FF8C00]/50 ring-offset-2 ring-offset-transparent dark:ring-offset-black opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
           
           <button className="px-8 py-4 bg-transparent text-zinc-900 dark:text-white font-semibold rounded-full border border-black/20 dark:border-white/20 hover:border-[#FF8C00] dark:hover:border-[#FF8C00] hover:text-[#FF8C00] dark:hover:text-[#FF8C00] hover:bg-[#FF8C00]/10 transition-colors backdrop-blur-md">
-            Work with Me
+            {t.hero.workBtn}
           </button>
         </motion.div>
       </motion.div>
@@ -94,7 +97,7 @@ export function HeroSection() {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3"
       >
-        <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-semibold">Scroll</span>
+        <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 font-semibold">{t.hero.scroll}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{

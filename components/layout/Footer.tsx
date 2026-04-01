@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const InstagramIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -36,6 +37,7 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 );
 
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -86,24 +88,24 @@ export function Footer() {
             )}
           </Link>
           <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed max-w-sm transition-colors">
-            Fotografia de alto impacto capturando os momentos decisivos no esporte, na ação e no palco comercial.
+            {t.footer.bio}
           </p>
         </div>
 
         {/* Column 2: Quick Links */}
         <div className="flex flex-col space-y-4 md:items-center">
-          <h4 className="text-zinc-900 dark:text-white font-semibold uppercase tracking-widest text-sm mb-2 transition-colors">Links Rápidos</h4>
+          <h4 className="text-zinc-900 dark:text-white font-semibold uppercase tracking-widest text-sm mb-2 transition-colors">{t.footer.links}</h4>
           <ul className="flex flex-col space-y-3 text-sm font-medium text-zinc-500 dark:text-zinc-400 transition-colors">
-            <li><Link href="/" className="hover:text-[#FF8C00] transition-colors">Home</Link></li>
-            <li><Link href="/services" className="hover:text-[#FF8C00] transition-colors">Serviços</Link></li>
-            <li><Link href="/" className="hover:text-[#FF8C00] transition-colors">Portfólio</Link></li>
-            <li><Link href="/contact" className="hover:text-[#FF8C00] transition-colors">Contato</Link></li>
+            <li><Link href="/" className="hover:text-[#FF8C00] transition-colors">{t.navbar.work}</Link></li>
+            <li><Link href="/services" className="hover:text-[#FF8C00] transition-colors">{t.navbar.services}</Link></li>
+            <li><Link href="/about" className="hover:text-[#FF8C00] transition-colors">{t.navbar.about}</Link></li>
+            <li><Link href="/contact" className="hover:text-[#FF8C00] transition-colors">{t.navbar.contact}</Link></li>
           </ul>
         </div>
 
         {/* Column 3: Social Links */}
         <div className="flex flex-col space-y-4 md:items-end">
-          <h4 className="text-zinc-900 dark:text-white font-semibold uppercase tracking-widest text-sm mb-2 transition-colors">Social</h4>
+          <h4 className="text-zinc-900 dark:text-white font-semibold uppercase tracking-widest text-sm mb-2 transition-colors">{t.footer.social}</h4>
           <div className="flex gap-4">
             <a 
               href="https://www.linkedin.com/in/matthewpinho" 
@@ -144,16 +146,14 @@ export function Footer() {
 
       {/* Copyright Signature */}
       <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-200 dark:border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 text-xs md:text-sm tracking-wide transition-colors">
-        <span>© {currentYear} Matthew Pinho. Todos os direitos reservados.</span>
+        <span>© {currentYear} Matthew Pinho. {t.footer.copy}</span>
         <span>
-          Todos os direitos reservados @MatthePinho - Desenvolvido por{" "}
+          {t.footer.rights}{" "}
           <a 
-            href="https://fslsolution.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="#" 
             className="text-zinc-900 dark:text-white font-semibold hover:text-[#FF8C00] dark:hover:text-[#FF8C00] transition-colors whitespace-nowrap"
           >
-            FSLSolution
+            Antigravity AI
           </a>
         </span>
       </div>

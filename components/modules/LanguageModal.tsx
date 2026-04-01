@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe } from "lucide-react";
-
-type Language = "PT" | "EN" | "ES" | "FR";
+import { Language, useLanguage } from "@/components/providers/LanguageProvider";
 
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: "PT", label: "Português", flag: "🇵🇹" },
@@ -15,6 +14,7 @@ const languages: { code: Language; label: string; flag: string }[] = [
 
 export function LanguageModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const { language: currentLanguage, setLanguage, t } = useLanguage();
   const [selected, setSelected] = useState<Language | null>(null);
 
   useEffect(() => {
@@ -23,12 +23,14 @@ export function LanguageModal() {
       // Small delay for better UX onboarding feel
       const timer = setTimeout(() => setIsOpen(true), 1500);
       return () => clearTimeout(timer);
+    } else {
+      setSelected(hasSelected as Language);
     }
   }, []);
 
   const handleSelect = (code: Language) => {
     setSelected(code);
-    localStorage.setItem("preferred_language", code);
+    setLanguage(code);
     
     // Close modal after a brief moment to show the selection highlight
     setTimeout(() => {
@@ -62,8 +64,8 @@ export function LanguageModal() {
                 <Globe className="w-6 h-6 text-[#FF8C00]" />
               </div>
               
-              <h2 className="text-2xl font-bold dark:text-white text-zinc-900 mb-2">Select Language</h2>
-              <p className="text-sm dark:text-zinc-400 text-zinc-500 mb-8">Choose your preferred language to continue exploring the portfolio.</p>
+              <h2 className="text-2xl font-bold dark:text-white text-zinc-900 mb-2">{t.modal.title}</h2>
+              <p className="text-sm dark:text-zinc-400 text-zinc-500 mb-8">{t.modal.desc}</p>
               
               <div className="flex flex-col gap-3 w-full">
                 {languages.map((lang) => {

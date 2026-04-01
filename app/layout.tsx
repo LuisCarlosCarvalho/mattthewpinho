@@ -49,6 +49,7 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { LanguageModal } from "@/components/modules/LanguageModal";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -65,12 +66,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col transition-colors duration-500 bg-slate-50 dark:bg-[#050505] text-zinc-900 dark:text-white selection:bg-black/10 dark:selection:bg-white/30">
-        <ThemeProvider>
-          <LanguageModal />
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <LanguageModal />
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
         <Analytics />
         <SpeedInsights />
       </body>

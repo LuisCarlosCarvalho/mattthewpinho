@@ -130,8 +130,8 @@ export const translations = {
       bio: "Fotografia de alto impacto capturando os momentos decisivos no esporte, na ação e no palco comercial.",
       links: "Links Rápidos",
       social: "Social",
-      rights: "Todos os direitos reservados @MatthePinho - Desenvolvido por",
-      copy: "Todos os direitos reservados.",
+      devBy: "Desenvolvido por",
+      copy: "Todos os direitos reservados",
     },
     modal: {
       title: "Selecionar Idioma",
@@ -241,8 +241,8 @@ export const translations = {
       bio: "High-impact photography capturing decisive moments in sports, action, and the commercial stage.",
       links: "Quick Links",
       social: "Social",
-      rights: "All rights reserved @MatthePinho - Developed by",
-      copy: "All rights reserved.",
+      devBy: "Developed by",
+      copy: "All rights reserved",
     },
     modal: {
       title: "Select Language",
@@ -352,8 +352,8 @@ export const translations = {
       bio: "Fotografía de alto impacto capturando los momentos decisivos en el deporte, la acción y el ámbito comercial.",
       links: "Enlaces Rápidos",
       social: "Redes Sociales",
-      rights: "Todos los derechos reservados @MatthePinho - Desarrollado por",
-      copy: "Todos os direitos reservados.",
+      devBy: "Desarrollado por",
+      copy: "Todos los derechos reservados",
     },
     modal: {
       title: "Seleccionar Idioma",
@@ -463,8 +463,8 @@ export const translations = {
       bio: "Photographie percutale capturant les moments décisifs dans le sport, l'action et le domaine commercial.",
       links: "Liens Rapides",
       social: "Réseaux Sociaux",
-      rights: "Tous droits réservés @MatthePinho - Développé par",
-      copy: "Tous droits réservés.",
+      devBy: "Développé par",
+      copy: "Tous droits réservés",
     },
     modal: {
       title: "Choisir la Langue",

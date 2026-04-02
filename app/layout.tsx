@@ -51,6 +51,7 @@ export const metadata: Metadata = {
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { LanguageModal } from "@/components/modules/LanguageModal";
+import { MobileRadialMenu } from "@/components/layout/MobileRadialMenu";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -70,6 +71,7 @@ export default function RootLayout({
           <ThemeProvider>
             <LanguageModal />
             <Navbar />
+            <MobileRadialMenu />
             {children}
             <Footer />
           </ThemeProvider>

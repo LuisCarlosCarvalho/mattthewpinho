@@ -145,17 +145,18 @@ export function Footer() {
       </div>
 
       {/* Copyright Signature */}
-      <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-200 dark:border-white/5 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500 text-xs md:text-sm tracking-wide transition-colors">
-        <span>© {currentYear} Matthew Pinho. {t.footer.copy}</span>
-        <span>
-          {t.footer.rights}{" "}
+      <div className="max-w-7xl mx-auto pt-8 border-t border-zinc-200 dark:border-white/5 text-center flex flex-col items-center gap-4 text-zinc-500 text-xs md:text-sm tracking-wide transition-colors">
+        <p>
+          © 2026 - {t.footer.copy} @MatthePinho - {t.footer.devBy}{" "}
           <a 
-            href="#" 
+            href="https://fslsolution.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="text-zinc-900 dark:text-white font-semibold hover:text-[#FF8C00] dark:hover:text-[#FF8C00] transition-colors whitespace-nowrap"
           >
-            Antigravity AI
+            FSL Solution
           </a>
-        </span>
+        </p>
       </div>
     </footer>
   );

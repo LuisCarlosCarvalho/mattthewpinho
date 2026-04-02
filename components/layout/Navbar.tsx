@@ -82,14 +82,14 @@ export function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={cn(
-          "fixed top-0 inset-x-0 h-24 z-50 flex items-center justify-between px-6 md:px-12 transition-all duration-300",
+          "fixed top-0 inset-x-0 h-24 z-50 flex items-center justify-between px-8 md:px-12 transition-all duration-300",
           isScrolled || mobileMenuOpen 
             ? "bg-white/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10" 
             : "bg-transparent"
         )}
       >
-        <Link href="/" className="flex items-center group z-50 transition-all duration-300">
-          <div className="relative h-[60px] w-[260px] md:h-[72px] md:w-[320px] overflow-hidden transition-all duration-300">
+        <Link href="/" className="flex items-center group z-50 transition-all duration-300 flex-shrink-0">
+          <div className="relative h-[60px] w-[120px] md:w-[320px] overflow-hidden transition-all duration-300">
             {mounted && (
               <Image
                 src={logoSrc}
@@ -168,92 +168,24 @@ export function Navbar() {
           <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Toggle button */}
-        <div className="flex md:hidden items-center gap-3 z-50">
+        {/* Mobile Navbar: Simple and Clean */}
+        <div className="flex md:hidden items-center justify-end gap-3 z-50 flex-shrink-0">
           <button 
             onClick={() => {
               const idx = languages.findIndex(l => l.code === currentLanguage);
               const next = languages[(idx + 1) % languages.length];
               setLanguage(next.code);
             }}
-            className="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/5 text-xl"
+            className="flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/5 text-xl flex-shrink-0"
           >
             {languages.find(l => l.code === currentLanguage)?.flag}
           </button>
           
-          <ThemeToggle />
-          <button 
-            className="p-2 -mr-2 text-zinc-900 dark:text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex-shrink-0 scale-90 origin-right">
+            <ThemeToggle />
+          </div>
         </div>
       </motion.nav>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-40 bg-zinc-50 dark:bg-[#050505] flex flex-col justify-center px-8 md:hidden"
-          >
-            <div className="flex flex-col gap-8 text-2xl font-bold">
-              {links.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link 
-                    href={link.href} 
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-zinc-900 dark:text-white hover:text-[#FF8C00] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="absolute bottom-12 left-8 right-8 flex flex-col gap-6 border-t border-zinc-200 dark:border-white/10 pt-6"
-            >
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{t.ui.language}</span>
-                <div className="flex gap-2">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLanguage(lang.code)}
-                      className={cn(
-                        "w-10 h-10 flex items-center justify-center rounded-full border transition-all text-xl",
-                        currentLanguage === lang.code 
-                          ? "border-[#FF8C00] bg-[#FF8C00]/10" 
-                          : "border-transparent bg-zinc-100 dark:bg-white/5"
-                      )}
-                    >
-                      {lang.flag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">{t.ui.theme}</span>
-                <ThemeToggle />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

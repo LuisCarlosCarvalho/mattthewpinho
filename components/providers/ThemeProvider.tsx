@@ -1,62 +1,70 @@
 "use client";
 
-import * as React from "react";
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-function AutoThemeManager() {
-  const { theme, setTheme } = useTheme();
+/**
+ * Componente interno para gerir a lógica de horário sem causar re-renders infinitos no Provider.
+ */
+function TimeThemeEngine() {
+  const { theme } = useTheme();
 
-  React.useEffect(() => {
-    // If the selected theme is "system" or "auto" (we'll implement the toggle as "system" for auto mode), we intercept it and apply custom time logic
-    const applyTimeBasedTheme = () => {
+  useEffect(() => {
+    const checkTime = () => {
       const hour = new Date().getHours();
-      const isDayTime = hour >= 6 && hour < 18; // 06:00 to 17:59
+      const isNight = hour >= 18 || hour < 6;
       
-      // We manually add or remove the dark class based on time if theme is strictly 'system'.
-      // Note: next-themes by default respects the OS preference for 'system'. We overwrite it physically on the document if we need to.
-      // Easiest is to force a specific "time-based" mode. We will call our time mode "time".
+      // O valor 'time' é o que definimos para o modo automático
+      if (theme === 'time' || theme === 'system') {
+        const root = document.documentElement;
+        if (isNight) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+      }
     };
 
-    if (theme === "time") {
-      const interval = setInterval(() => {
-        const hour = new Date().getHours();
-        const root = document.documentElement;
-        if (hour >= 6 && hour < 18) {
-          root.classList.remove('dark');
-          root.style.colorScheme = 'light';
-        } else {
-          root.classList.add('dark');
-          root.style.colorScheme = 'dark';
-        }
-      }, 60000); // verify every minute
-
-      // Run once immediately
-      const hour = new Date().getHours();
-      const root = document.documentElement;
-      if (hour >= 6 && hour < 18) {
-        root.classList.remove('dark');
-        root.style.colorScheme = 'light';
-      } else {
-        root.classList.add('dark');
-        root.style.colorScheme = 'dark';
-      }
-      return () => clearInterval(interval);
-    }
+    checkTime();
+    const timer = setInterval(checkTime, 60000);
+    return () => clearInterval(timer);
   }, [theme]);
 
   return null;
 }
 
-export function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
+export function ThemeProvider({ children, ...props }: any) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // Lógica imediata após montagem para garantir que o tema de horário seja aplicado
+    // antes mesmo do engine disparar, evitando o flicker inicial caso o provider
+    // ainda esteja a processar o 'time'.
+    const hour = new Date().getHours();
+    const isNight = hour >= 18 || hour < 6;
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (!savedTheme || savedTheme === 'system' || savedTheme === 'time') {
+      document.documentElement.classList.toggle('dark', isNight);
+    }
+  }, []);
+
+  // Para resolver o erro "Encountered a script tag", evitamos renderizar o provider 
+  // no servidor caso ele cause conflitos, mas para manter a funcionalidade do next-themes
+  // e o suppressHydrationWarning do layout.tsx, renderizamos de forma estável.
+  
   return (
     <NextThemesProvider 
       attribute="class" 
       defaultTheme="time" 
-      enableSystem={false} 
+      enableSystem={false}
       themes={['light', 'dark', 'time']}
+      disableTransitionOnChange
       {...props}
     >
-      <AutoThemeManager />
+      <TimeThemeEngine />
       {children}
     </NextThemesProvider>
   );

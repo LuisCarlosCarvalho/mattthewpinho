@@ -8,10 +8,10 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 export function Navbar() {
-  const { t, language: currentLanguage, setLanguage } = useLanguage();
+  const { t, language: currentLanguage, changeLanguage } = useLanguage();
   
   const links = [
     { href: "/", label: t.navbar.work },
@@ -82,14 +82,14 @@ export function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={cn(
-          "fixed top-0 inset-x-0 h-24 z-50 flex items-center justify-between px-8 md:px-12 transition-all duration-300",
+          "fixed top-0 inset-x-0 h-24 z-50 flex items-center justify-between px-6 md:px-12 transition-all duration-300",
           isScrolled || mobileMenuOpen 
             ? "bg-white/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10" 
             : "bg-transparent"
         )}
       >
         <Link href="/" className="flex items-center group z-50 transition-all duration-300 flex-shrink-0">
-          <div className="relative h-[60px] w-[120px] md:w-[320px] overflow-hidden transition-all duration-300">
+          <div className="relative h-8 md:h-10 w-auto min-w-[100px] md:min-w-[150px] transition-all duration-300">
             {mounted && (
               <Image
                 src={logoSrc}
@@ -144,7 +144,7 @@ export function Navbar() {
                       <button
                         key={lang.code}
                         onClick={() => {
-                          setLanguage(lang.code);
+                          changeLanguage(lang.code);
                           setLangMenuOpen(false);
                         }}
                         className={cn(
@@ -174,7 +174,7 @@ export function Navbar() {
             onClick={() => {
               const idx = languages.findIndex(l => l.code === currentLanguage);
               const next = languages[(idx + 1) % languages.length];
-              setLanguage(next.code);
+              changeLanguage(next.code);
             }}
             className="flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-white/5 text-xl flex-shrink-0"
           >

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Globe } from "lucide-react";
-import { Language, useLanguage } from "@/components/providers/LanguageProvider";
+import { Language, useLanguage } from "@/src/context/LanguageContext";
 
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: "PT", label: "Português", flag: "🇵🇹" },
@@ -14,7 +14,7 @@ const languages: { code: Language; label: string; flag: string }[] = [
 
 export function LanguageModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const { language: currentLanguage, setLanguage, t } = useLanguage();
+  const { language: currentLanguage, changeLanguage, t } = useLanguage();
   const [selected, setSelected] = useState<Language | null>(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function LanguageModal() {
 
   const handleSelect = (code: Language) => {
     setSelected(code);
-    setLanguage(code);
+    changeLanguage(code);
     
     // Close modal after a brief moment to show the selection highlight
     setTimeout(() => {

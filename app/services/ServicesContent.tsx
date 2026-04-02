@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Check } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 export default function ServicesPage() {
   const { t } = useLanguage();

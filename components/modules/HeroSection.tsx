@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 export function HeroSection() {
   const { t } = useLanguage();

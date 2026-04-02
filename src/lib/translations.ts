@@ -3,11 +3,13 @@ export type Language = "PT" | "EN" | "ES" | "FR";
 export const translations = {
   PT: {
     navbar: {
+      home: "Início",
       work: "Trabalhos",
       about: "Sobre",
       services: "Serviços",
       contact: "Contato",
       blog: "Notícias",
+      content: "Conteúdo",
     },
     seo: {
       title: "Matthew Pinho | Fotografia de Esportes e Eventos",
@@ -42,7 +44,7 @@ export const translations = {
       location: "Sediada em Portugal | Disponível para viagens.",
       desc: "Fotografia comercial de alto impacto. Focada em registrar e imortalizar os momentos decisivos da ação técnica e da euforia humana, entregando poder e narrativa para a sua marca ou equipe.",
       forWhom: "Para quem é indicado",
-      features: "Serviços",
+      features: "Servis",
       deliveries: "Entregáveis típicos",
       prices: "Tarifas iniciais",
       cta: "Solicitar cobertura",
@@ -111,7 +113,7 @@ export const translations = {
       filters: {
         all: "Todos",
         men: "Masculino",
-        women: "Feminino",
+        women: "Femenino",
         f1: "Fórmula 1",
         nba: "NBA",
         poker: "Poker",
@@ -143,7 +145,7 @@ export const translations = {
     }
   },
   EN: {
-    navbar: { work: "Work", about: "About", services: "Services", contact: "Contact", blog: "News" },
+    navbar: { home: "Home", work: "Work", about: "About", services: "Services", contact: "Contact", blog: "News", content: "Content" },
     seo: {
       title: "Matthew Pinho | Sports & Events Photography",
       description: "Capturing peak performance and athletic storytelling across Europe. Specialist in sports and commercial event photography.",
@@ -254,7 +256,7 @@ export const translations = {
     }
   },
   ES: {
-    navbar: { work: "Trabajos", about: "Sobre", services: "Servicios", contact: "Contacto", blog: "Noticias" },
+    navbar: { home: "Inicio", work: "Trabajos", about: "Sobre", services: "Servicios", contact: "Contacto", blog: "Noticias", content: "Contenido" },
     seo: {
       title: "Matthew Pinho | Fotografía de Deportes y Eventos",
       description: "Capturando el alto rendimiento y la narrativa atlética en toda Europa. Especialista en fotografía deportiva y eventos comerciales.",
@@ -286,7 +288,7 @@ export const translations = {
     services: {
       title: "Fotografía de Deportes y Eventos",
       location: "Con sede en Portugal | Disponible para viajar.",
-      desc: "Fotografía comercial de alto impacto. Enfocada en registrar e inmortalizar los momentos decisivos de la acción técnica y la euforia humana, entregando poder y narrativa para su marca o equipo.",
+      desc: "Fotografía comercial de alto impacto. Enfocada en registrar e inmortalizar los momentos decisivos de la acción técnica y la euforia humana, entregando poder e narrativa para su marca o equipo.",
       forWhom: "Para quién está indicado",
       features: "Servicios",
       deliveries: "Entregables típicos",
@@ -302,7 +304,7 @@ export const translations = {
     },
     contact: {
       title: "Vamos a Crear Juntos",
-      subtitle: "Ya sea para una cobertura explosiva de eventos o retratos meticulosos, mi lente está lista para contar tu historia.",
+      subtitle: "Ya sea para una cobertura explosiva de eventos ou retratos meticulosos, mi lente está lista para contar tu historia.",
       inquireTitle: "Consultar",
       inquireSub: "Completa los detalles a continuación y te responderé en menos de 48 horas.",
       form: {
@@ -365,7 +367,7 @@ export const translations = {
     }
   },
   FR: {
-    navbar: { work: "Travaux", about: "À propos", services: "Services", contact: "Contact", blog: "Actualités" },
+    navbar: { home: "Accueil", work: "Travaux", about: "À propos", services: "Services", contact: "Contact", blog: "Actualités", content: "Contenu" },
     seo: {
       title: "Matthew Pinho | Photographie de Sport & Événements",
       description: "Capturer la haute performance et le récit athlétique à travers l'Europe. Spécialiste de la photographie de sport et d'événements commerciaux.",
@@ -434,7 +436,7 @@ export const translations = {
     },
     blog: {
       title: "World Sports Hub",
-      subtitle: "Où la performance rencontre l'information.",
+      subtitle: "Où la performance encontra a informação.",
       categories: {
         football: "Football",
         motorsport: "Motorsport",

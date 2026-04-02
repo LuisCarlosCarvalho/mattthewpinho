@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Camera, User, Briefcase, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 type ContactFormData = {
   name: string;

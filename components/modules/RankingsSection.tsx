@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Trophy, Star, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 
 interface Ranking {
   pos: number;

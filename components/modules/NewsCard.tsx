@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 import { cn } from "@/lib/utils";
 
 interface NewsCardProps {

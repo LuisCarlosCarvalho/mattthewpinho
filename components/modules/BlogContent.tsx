@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useLanguage } from "@/src/context/LanguageContext";
 import { RankingsSection } from "./RankingsSection";
 import { NewsCard, NewsSkeleton } from "./NewsCard";
 import { cn } from "@/lib/utils";

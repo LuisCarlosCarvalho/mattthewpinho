@@ -100,15 +100,34 @@ export const translations = {
         { title: "Retratos de Atletas", desc: "Retratos íntimos e poderosos em estúdio ou locação que destacam a resiliência, dedicação e personalidade do atleta." },
         { title: "Comercial & Marca", desc: "Fotografia institucional e publicitária de alto nível adaptada para elevar a narrativa da sua marca e presença no mercado." },
       ],
+      whatsappTemplate: "Olá Matthew! Meu nome é {name}. Gostaria de consultar a disponibilidade para um projeto.\n\n📧 Email: {email}\n📅 Data/Localização: {date}\n📝 Detalhes: {message}\n\nAguardo o seu contacto!",
+    },
+    gallery: {
+      accessTitle: "Galeria Privada",
+      accessDesc: "Introduza o seu email e a chave de acesso para visualizar as suas fotos.",
+      emailLabel: "Seu Email",
+      keyLabel: "Chave de Acesso",
+      keyPlaceholder: "Ex: PRO123",
+      submitAccess: "Ver Galeria",
+      invalidKey: "Chave de acesso inválida.",
+      watermark: "Matthew Pinho",
+      addToCart: "Adicionar",
+      removeFromCart: "Remover",
+      total: "Total",
+      checkout: "SOLICITAR FOTOS",
+      selection: "{count} fotos selecionadas",
+      emptyCart: "Carrinho vazio",
+      whatsappCheckout: "Olá Matthew! Gostaria de comprar as seguintes fotos do evento {event}:\n\n{photos}\n\nTotal: {total}\nMeu Email: {email}.\n\nAguardo o link para pagamento!",
     },
     blog: {
       title: "World Sports Hub",
       subtitle: "Onde a performance encontra a informação.",
       categories: {
         football: "Futebol",
-        motorsport: "Motorsport",
-        bouncing: "Bouncing & Action",
-        mind: "Mind Sports",
+        pavilion: "Pavilhão",
+        beach: "Mar e Areia",
+        action: "Motores & Radical",
+        others: "Outros",
       },
       filters: {
         all: "Todos",
@@ -127,6 +146,8 @@ export const translations = {
       loading: "Carregando feed...",
       noNews: "Nenhuma notícia encontrada para esta categoria.",
       source: "Fonte",
+      viewMore: "Ver mais notícias",
+      ago: "há",
     },
     footer: {
       bio: "Fotografia de alto impacto capturando os momentos decisivos no esporte, na ação e no palco comercial.",
@@ -142,6 +163,13 @@ export const translations = {
     ui: {
       language: "Idioma",
       theme: "Tema",
+    },
+    portfolio: {
+      back: "Voltar para o Portfólio",
+      behind: "Por trás das lentes",
+      tech: "Especificações Técnicas",
+      next: "Próximo Projeto",
+      notAvailable: "Especificações técnicas não disponíveis para este projeto."
     }
   },
   EN: {
@@ -211,15 +239,34 @@ export const translations = {
         { title: "Athlete Portraits", desc: "Intimate and powerful studio or on-location portraits highlighting the athlete's resilience and personality." },
         { title: "Commercial & Brand", desc: "High-end institutional and advertising photography tailored to elevate your brand's narrative." },
       ],
+      whatsappTemplate: "Hello Matthew! My name is {name}. I'd like to check your availability for a project.\n\n📧 Email: {email}\n📅 Date/Location: {date}\n📝 Details: {message}\n\nI look forward to hearing from you!",
+    },
+    gallery: {
+      accessTitle: "Private Gallery",
+      accessDesc: "Enter your email and access key to view your photos.",
+      emailLabel: "Your Email",
+      keyLabel: "Access Key",
+      keyPlaceholder: "E.g.: PRO123",
+      submitAccess: "View Gallery",
+      invalidKey: "Invalid access key.",
+      watermark: "Matthew Pinho",
+      addToCart: "Add to Cart",
+      removeFromCart: "Remove",
+      total: "Total",
+      checkout: "REQUEST PHOTOS",
+      selection: "{count} photos selected",
+      emptyCart: "Cart is empty",
+      whatsappCheckout: "Hello Matthew! I'd like to purchase the following photos from the event {event}:\n\n{photos}\n\nTotal: {total}\nMy Email: {email}.\n\nI look forward to the payment link!",
     },
     blog: {
       title: "World Sports Hub",
       subtitle: "Where performance meets information.",
       categories: {
         football: "Football",
-        motorsport: "Motorsport",
-        bouncing: "Bouncing & Action",
-        mind: "Mind Sports",
+        pavilion: "Indoor Sports",
+        beach: "Beach & Action",
+        action: "Motors & Radical",
+        others: "Others",
       },
       filters: {
         all: "All",
@@ -238,6 +285,8 @@ export const translations = {
       loading: "Loading feed...",
       noNews: "No news found for this category.",
       source: "Source",
+      viewMore: "View more news",
+      ago: "ago",
     },
     footer: {
       bio: "High-impact photography capturing decisive moments in sports, action, and the commercial stage.",
@@ -253,6 +302,13 @@ export const translations = {
     ui: {
       language: "Language",
       theme: "Theme",
+    },
+    portfolio: {
+      back: "Back to Portfolio",
+      behind: "Behind the Lens",
+      tech: "Tech Specs",
+      next: "Next Project",
+      notAvailable: "Tech specs not available for this project."
     }
   },
   ES: {
@@ -322,15 +378,34 @@ export const translations = {
         { title: "Retratos de Atletas", desc: "Retratos íntimos y poderosos en estudio o exteriores que destacan la resistencia, dedicación y personalidad del atleta." },
         { title: "Comercial & Marca", desc: "Fotografía institucional y publicitaria de alto nivel adaptada para elevar la narrativa y presencia de tu marca." },
       ],
+      whatsappTemplate: "¡Hola Matthew! Mi nombre es {name}. Me gustaría consultar tu disponibilidad para un proyecto.\n\n📧 Email: {email}\n📅 Fecha/Ubicación: {date}\n📝 Detalles: {message}\n\n¡Espero tu contacto!",
+    },
+    gallery: {
+      accessTitle: "Galería Privada",
+      accessDesc: "Introduce tu email y clave de acceso para ver tus fotos.",
+      emailLabel: "Tu Email",
+      keyLabel: "Clave de Acceso",
+      keyPlaceholder: "Ej: PRO123",
+      submitAccess: "Ver Galería",
+      invalidKey: "Clave de acceso incorrecta.",
+      watermark: "Matthew Pinho",
+      addToCart: "Añadir",
+      removeFromCart: "Eliminar",
+      total: "Total",
+      checkout: "SOLICITAR FOTOS",
+      selection: "{count} fotos seleccionadas",
+      emptyCart: "Carrito vacío",
+      whatsappCheckout: "¡Hola Matthew! Me gustaría comprar as seguintes fotos do evento {event}:\n\n{photos}\n\nTotal: {total}\nMi Email: {email}.\n\n¡Espero el enlace de pago!",
     },
     blog: {
       title: "World Sports Hub",
       subtitle: "Donde el rendimiento se encuentra con la información.",
       categories: {
         football: "Fútbol",
-        motorsport: "Motorsport",
-        bouncing: "Bouncing & Action",
-        mind: "Mind Sports",
+        pavilion: "Pabellón",
+        beach: "Mar y Arena",
+        action: "Motores & Radical",
+        others: "Otros",
       },
       filters: {
         all: "Todos",
@@ -349,6 +424,8 @@ export const translations = {
       loading: "Cargando feed...",
       noNews: "No se encontraron noticias para esta categoría.",
       source: "Fuente",
+      viewMore: "Ver más noticias",
+      ago: "hace",
     },
     footer: {
       bio: "Fotografía de alto impacto capturando los momentos decisivos en el deporte, la acción y el ámbito comercial.",
@@ -364,6 +441,13 @@ export const translations = {
     ui: {
       language: "Idioma",
       theme: "Tema",
+    },
+    portfolio: {
+      back: "Volver al Portafolio",
+      behind: "Detrás de la lente",
+      tech: "Especificaciones Técnicas",
+      next: "Próximo Proyecto",
+      notAvailable: "Especificaciones técnicas no disponibles para este proyecto."
     }
   },
   FR: {
@@ -433,15 +517,34 @@ export const translations = {
         { title: "Portraits d'Athlètes", desc: "Portraits intimes et puissants en studio ou en extérieur mettant en avant la résilience et la personnalité de l'athlète." },
         { title: "Commercial & Marque", desc: "Photographie institutionnelle et publicitaire haut de gamme conçue pour élever le récit de votre marque." },
       ],
+      whatsappTemplate: "Bonjour Matthew ! Je m'appelle {name}. J'aimerais vérifier votre disponibilité pour un projet.\n\n📧 Email : {email}\n📅 Date/Lieu : {date}\n📝 Détails : {message}\n\nDans l'attente de votre contact !",
+    },
+    gallery: {
+      accessTitle: "Galerie Privée",
+      accessDesc: "Entrez votre email et votre clé d'accès pour voir vos photos.",
+      emailLabel: "Votre Email",
+      keyLabel: "Clé d'Accès",
+      keyPlaceholder: "Ex: PRO123",
+      submitAccess: "Voir la Galerie",
+      invalidKey: "Clé d'accès invalide.",
+      watermark: "Matthew Pinho",
+      addToCart: "Ajouter",
+      removeFromCart: "Supprimer",
+      total: "Total",
+      checkout: "DEMANDER LES PHOTOS",
+      selection: "{count} photos sélectionnées",
+      emptyCart: "Panier vide",
+      whatsappCheckout: "Bonjour Matthew ! Je souhaite acheter les photos suivantes de l'événement {event} :\n\n{photos}\n\nTotal : {total}\nMon Email : {email}.\n\nDans l'attente du lien de paiement !",
     },
     blog: {
       title: "World Sports Hub",
       subtitle: "Où la performance encontra a informação.",
       categories: {
         football: "Football",
-        motorsport: "Motorsport",
-        bouncing: "Bouncing & Action",
-        mind: "Mind Sports",
+        pavilion: "Sports de Salle",
+        beach: "Plage & Action",
+        action: "Moteurs & Radical",
+        others: "Autres",
       },
       filters: {
         all: "Tous",
@@ -460,6 +563,8 @@ export const translations = {
       loading: "Chargement du flux...",
       noNews: "Aucune actualité trouvée pour cette catégorie.",
       source: "Source",
+      viewMore: "Voir plus",
+      ago: "il y a",
     },
     footer: {
       bio: "Photographie percutale capturant les moments décisifs dans le sport, l'action et le domaine commercial.",
@@ -475,6 +580,13 @@ export const translations = {
     ui: {
       language: "Langue",
       theme: "Thème",
+    },
+    portfolio: {
+      back: "Retour au Portfolio",
+      behind: "Derrière l'objectif",
+      tech: "Spécifications Techniques",
+      next: "Projet Suivant",
+      notAvailable: "Spécifications techniques non disponibles pour ce projet."
     }
   },
 };

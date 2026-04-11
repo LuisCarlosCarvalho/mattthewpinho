@@ -43,13 +43,14 @@ export const metadata: Metadata = {
     description: "High-end sports and commercial photography.",
   },
   icons: {
-    icon: 'https://i.imgur.com/HuDJYS9.png',
-    apple: 'https://i.imgur.com/HuDJYS9.png',
+    icon: 'https://i.imgur.com/sQfKcEC.png',
+    apple: 'https://i.imgur.com/sQfKcEC.png',
   },
 };
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { LanguageProvider } from "@/src/context/LanguageContext";
+import { CartProvider } from "@/src/context/CartContext";
 import { LanguageModal } from "@/components/modules/LanguageModal";
 import MobileSidebar from "@/components/layout/MobileSidebar";
 import { Analytics } from "@vercel/analytics/react";
@@ -67,15 +68,17 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col transition-colors duration-500 bg-slate-50 dark:bg-[#050505] text-zinc-900 dark:text-white selection:bg-black/10 dark:selection:bg-white/30">
-        <LanguageProvider>
-          <ThemeProvider>
-            <LanguageModal />
-            <Navbar />
-            <MobileSidebar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <CartProvider>
+              <LanguageModal />
+              <Navbar />
+              <MobileSidebar />
+              {children}
+              <Footer />
+            </CartProvider>
+          </LanguageProvider>
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>

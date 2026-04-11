@@ -25,10 +25,26 @@ export default function ContactPage() {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // 1. Prepare the encoded message
+    const messageTemplate = t.contact.whatsappTemplate;
+    const formattedMessage = messageTemplate
+      .replace("{name}", data.name)
+      .replace("{email}", data.email)
+      .replace("{date}", data.eventDate || "TBD")
+      .replace("{message}", data.message);
+
+    const encodedMessage = encodeURIComponent(formattedMessage);
+    const whatsappUrl = `https://wa.me/351912453230?text=${encodedMessage}`;
+
+    // 2. Simulate small delay for UI feedback
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    
+    // 3. Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank");
+    
+    // 4. Show success state locally
     setIsSubmitted(true);
-    console.log("Mock Payload:", data);
+    console.log("WhatsApp Redirection:", whatsappUrl);
   };
 
   const services = [

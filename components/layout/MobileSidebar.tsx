@@ -69,7 +69,7 @@ const MobileSidebar = () => {
       {/* Floating Action Button */}
       <button
         onClick={toggleMenu}
-        className="fixed bottom-6 right-6 z-[60] w-14 h-14 bg-[#FF8C00] rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform duration-200"
+        className="fixed bottom-6 right-6 z-[1000] w-14 h-14 bg-[#FF8C00] rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform duration-200"
         aria-label="Toggle Menu"
       >
         <motion.div
@@ -89,7 +89,7 @@ const MobileSidebar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[50]"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998]"
             />
             
             <motion.div
@@ -97,16 +97,16 @@ const MobileSidebar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-[75%] max-w-[320px] bg-[#0a0a0a] border-l border-white/5 z-[55] flex flex-col p-8 pt-20"
+              className="fixed inset-y-0 right-0 w-[80%] max-w-[320px] bg-black/95 backdrop-blur-xl border-l border-white/5 z-[999] flex flex-col p-8 pt-20"
             >
               {/* Header with Close Button */}
               <div className="flex items-center justify-between mb-12 text-white">
-                <div className="relative w-32 h-10">
+                <div className="relative w-40 h-8">
                   <Image
-                    src={mounted ? (document.documentElement.classList.contains("dark") ? "https://i.imgur.com/ZmEiX0I.png" : "https://i.imgur.com/eZXZSHb.png") : "https://i.imgur.com/ZmEiX0I.png"}
+                    src="https://i.imgur.com/NAP62Sd.png"
                     alt="Matthew Pinho"
                     fill
-                    className="object-contain object-left scale-[2.1] origin-left"
+                    className="object-contain object-left transition-all duration-300"
                   />
                 </div>
                 <button 
@@ -122,13 +122,13 @@ const MobileSidebar = () => {
                 <h3 className="text-white/30 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border-b border-white/5 pb-2">
                   {t.footer.links}
                 </h3>
-                <nav className="flex flex-col gap-6">
+                <nav className="flex flex-col">
                   {navigationGroup.map((item) => (
                     <Link
                       key={item.id}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="group flex items-center gap-4 text-white/90 hover:text-[#FF8C00] transition-colors duration-200"
+                      className="group flex items-center gap-4 text-white/90 hover:text-[#FF8C00] transition-colors duration-200 py-4"
                     >
                       <span className="p-2 rounded-lg bg-white/5 group-hover:bg-[#FF8C00]/10 transition-colors">
                         {item.icon}
@@ -146,13 +146,13 @@ const MobileSidebar = () => {
                 <h3 className="text-white/30 text-[10px] font-black uppercase tracking-[0.2em] mb-6 border-b border-white/5 pb-2">
                   {t.navbar.content}
                 </h3>
-                <nav className="flex flex-col gap-6">
+                <nav className="flex flex-col">
                   {contentGroup.map((item) => (
                     <Link
                       key={item.id}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="group flex items-center gap-4 text-white/90 hover:text-[#FF8C00] transition-colors duration-200"
+                      className="group flex items-center gap-4 text-white/90 hover:text-[#FF8C00] transition-colors duration-200 py-4"
                     >
                       <span className="p-2 rounded-lg bg-white/5 group-hover:bg-[#FF8C00]/10 transition-colors">
                         {item.icon}

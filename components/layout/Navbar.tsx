@@ -9,6 +9,9 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useLanguage } from "@/src/context/LanguageContext";
+import { ShoppingBag } from "lucide-react";
+import { GalleryAccessModal } from "../modules/GalleryAccessModal";
+import { useCart } from "@/src/context/CartContext";
 
 export function Navbar() {
   const { t, language: currentLanguage, changeLanguage } = useLanguage();
@@ -35,8 +38,9 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [logoSrc, setLogoSrc] = useState("https://i.imgur.com/ZmEiX0I.png");
-  const [isDarkState, setIsDarkState] = useState(true);
+  const { totalItems } = useCart();
+  const [isAccessModalOpen, setIsAccessModalOpen] = useState(false);
+  const [logoSrc, setLogoSrc] = useState("https://i.imgur.com/NAP62Sd.png");
 
   useEffect(() => {
     setMounted(true);
@@ -47,8 +51,7 @@ export function Navbar() {
 
     const checkTheme = () => {
       const isDark = document.documentElement.classList.contains("dark");
-      setIsDarkState(isDark);
-      setLogoSrc(isDark ? "https://i.imgur.com/ZmEiX0I.png" : "https://i.imgur.com/eZXZSHb.png");
+      setLogoSrc(isDark ? "https://i.imgur.com/NAP62Sd.png" : "https://i.imgur.com/Syr1BfR.png");
     };
 
     checkTheme();
@@ -89,17 +92,14 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="flex items-center group z-50 transition-all duration-300 flex-shrink-0">
-          <div className="relative h-8 md:h-10 w-auto min-w-[100px] md:min-w-[150px] transition-all duration-300">
+          <div className="relative h-7 sm:h-8 md:h-10 w-auto min-w-[100px] sm:min-w-[130px] md:min-w-[150px] transition-all duration-300">
             {mounted && (
               <Image
                 src={logoSrc}
                 alt="Matthew Pinho Photography"
                 fill
                 priority
-                className={cn(
-                  "object-contain object-left transition-all duration-500 origin-left",
-                  isDarkState ? "scale-[2.1]" : "scale-100"
-                )}
+                className="object-contain object-left transition-all duration-500 origin-left scale-[1.8] sm:scale-[2.0]"
               />
             )}
           </div>
@@ -116,7 +116,21 @@ export function Navbar() {
           ))}
         </ul>
         
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4">
+          {/* Gallery Cart Icon */}
+          <button
+            onClick={() => setIsAccessModalOpen(true)}
+            className="relative p-2 text-[#FF8C00] hover:scale-110 transition-transform flex items-center justify-center mr-2"
+            aria-label="Private Gallery"
+          >
+            <ShoppingBag size={24} strokeWidth={2.5} />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 bg-white text-black text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
+                {totalItems}
+              </span>
+            )}
+          </button>
+
           {/* Language Selector Desktop */}
           <div className="relative">
             <button 
@@ -170,6 +184,19 @@ export function Navbar() {
 
         {/* Mobile Navbar: Simple and Clean */}
         <div className="flex md:hidden items-center justify-end gap-3 z-50 flex-shrink-0">
+          <button
+            onClick={() => setIsAccessModalOpen(true)}
+            className="relative p-2 text-[#FF8C00] flex items-center justify-center"
+            aria-label="Private Gallery"
+          >
+            <ShoppingBag size={22} strokeWidth={2.5} />
+            {totalItems > 0 && (
+              <span className="absolute top-0 right-0 bg-white text-black text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
+
           <button 
             onClick={() => {
               const idx = languages.findIndex(l => l.code === currentLanguage);
@@ -186,6 +213,12 @@ export function Navbar() {
           </div>
         </div>
       </motion.nav>
+
+      {/* Navigation Modals */}
+      <GalleryAccessModal 
+        isOpen={isAccessModalOpen} 
+        onClose={() => setIsAccessModalOpen(false)} 
+      />
     </>
   );
 }

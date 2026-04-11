@@ -26,7 +26,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  // Update HTML lang attribute and title
+  // Update HTML lang attribute
   useEffect(() => {
     if (!mounted) return;
     document.documentElement.lang = language.toLowerCase();
@@ -38,9 +38,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const t = translations[language];
-
-  // Prevent hydration mismatch
-  if (!mounted) return null;
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage, t }}>
